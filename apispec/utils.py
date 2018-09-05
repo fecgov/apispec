@@ -30,7 +30,7 @@ def validate_spec(spec):
             "    pip install 'apispec[validation]'",
         )
     parser_kwargs = {}
-    if spec.openapi_version.version[0] == 3:
+    if spec.openapi_version.version[0] in (2, 3):
         parser_kwargs['backend'] = 'openapi-spec-validator'
     try:
         prance.BaseParser(spec_string=json.dumps(spec.to_dict()), **parser_kwargs)
